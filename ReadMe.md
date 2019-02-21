@@ -12,6 +12,8 @@ allprojects {
 }
 ```
 
+> implementation 'com.github.Bgtal:BaseConfigure:1.0.0'
+
 ## 项目依赖
 > com.android.support:appcompat-v7:27.1.1  
 > com.android.support:multidex:1.0.3  
