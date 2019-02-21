@@ -10,8 +10,7 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import blq.ssnb.snbutil.SnbToast;
+import android.widget.Toast;
 
 /**
  * <pre>
@@ -94,7 +93,7 @@ public class BaseSimpleWebViewFragment extends BaseWebViewFragment {
 
             public boolean onJsAlert(WebView view, String url, String message,
                                      JsResult result) {
-                SnbToast.showSmart(getContext(), message);
+                Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
                 result.confirm();
                 return true;
             }

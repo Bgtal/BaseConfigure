@@ -9,11 +9,7 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import blq.ssnb.snbutil.SnbToast;
+import android.widget.Toast;
 
 /**
  * <pre>
@@ -129,7 +125,7 @@ public abstract class BaseWebViewFragment extends BaseFragment {
 
             public boolean onJsAlert(WebView view, String url, String message,
                                      JsResult result) {
-                SnbToast.showSmart(getContext(), message);
+                Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
                 result.confirm();
                 return true;
             }
