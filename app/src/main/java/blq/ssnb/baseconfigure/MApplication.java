@@ -22,7 +22,8 @@ public class MApplication extends AbsApplication {
     @Override
     protected void initSnb() {
         SnbLog.getGlobalBuilder().isOpen(true);
-        LogManager.openLog(false,false);
+        LogManager.initLog();
+        LogManager.openLog(false, false);
     }
 
     @Override

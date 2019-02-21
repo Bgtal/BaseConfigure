@@ -32,4 +32,5 @@ dependencies {
     implementation project(path: ':libs')
     implementation 'com.blq.ssnb:snbutil:0.0.3'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
+//    implementation 'com.github.Bgtal:BaseConfigure:1.0.0'
 }
