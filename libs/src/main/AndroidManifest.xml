@@ -1,0 +1,9 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.blq.ssnb.baseconfigure">
+
+    <application>
+        <activity
+            android:name=".BaseFragmentContainerActivity"
+            android:screenOrientation="behind" />
+    </application>
+</manifest>
