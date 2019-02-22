@@ -1,4 +1,4 @@
-package com.blq.ssnb.baseconfigure;
+package com.blq.ssnb.baseconfigure.webview;
 
 import android.os.Bundle;
 import android.support.annotation.MenuRes;
@@ -12,6 +12,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.blq.ssnb.baseconfigure.R;
+
 /**
  * <pre>
  * ================================================
@@ -24,7 +26,7 @@ import android.widget.Toast;
  * ================================================
  * </pre>
  */
-public class BaseSimpleWebViewFragment extends BaseWebViewFragment {
+public class SimpleWebViewFragment extends BaseWebViewFragment {
     private static final String BUNDLE_KEY_WEB_INDEX_URL = "bundle_key_web_index_url";
 
     public static Bundle newArgument(String indexUrl) {
@@ -51,7 +53,7 @@ public class BaseSimpleWebViewFragment extends BaseWebViewFragment {
 
     @Override
     protected int rootLayout() {
-        return R.layout.base_fragment_simple_web_view;
+        return R.layout.fragment_simple_web_view;
     }
 
     @Override

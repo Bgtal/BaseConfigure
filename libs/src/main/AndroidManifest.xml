@@ -2,8 +2,7 @@
     package="com.blq.ssnb.baseconfigure">
 
     <application>
-        <activity
-            android:name=".BaseFragmentContainerActivity"
-            android:screenOrientation="behind" />
+        <activity android:name=".BaseFragmentContainerActivity" />
+        <activity android:name=".search.SimpleSearchActivity" />
     </application>
 </manifest>

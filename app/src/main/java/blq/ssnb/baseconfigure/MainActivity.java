@@ -3,16 +3,15 @@ package blq.ssnb.baseconfigure;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.blq.ssnb.baseconfigure.BaseFragmentContainerActivity;
-import com.blq.ssnb.baseconfigure.BaseSimpleWebViewFragment;
+import com.blq.ssnb.baseconfigure.search.SimpleSearchActivity;
+import com.blq.ssnb.baseconfigure.webview.SimpleWebViewFragment;
 
 import blq.ssnb.baseconfigure.activity.TestOneActivity;
-import blq.ssnb.baseconfigure.activity.TestTwoActivity;
 import blq.ssnb.baseconfigure.activity.TestTwoFragment;
+import blq.ssnb.baseconfigure.search.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,8 +27,13 @@ public class MainActivity extends AppCompatActivity {
 
         setAction(R.id.btn_web_view, v -> startActivity(BaseFragmentContainerActivity.newIntent(
                 getBaseContext(),
-                BaseSimpleWebViewFragment.class,
-                BaseSimpleWebViewFragment.newArgument("https://www.baidu.com"))));
+                SimpleWebViewFragment.class,
+                SimpleWebViewFragment.newArgument("https://www.baidu.com"))));
+
+        setAction(R.id.btn_simple_search, v -> {
+            startActivity(SimpleSearchActivity.newIntent(getBaseContext(),
+                    SimpleSearchActivity.newBundle(SearchFragment.class, null)));
+        });
 
     }
 

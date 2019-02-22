@@ -6,6 +6,17 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="sview_SnbSmartSearchEditStyle">@style/Search</item>
+    </style>
+
+    <style name="Search">
+        <item name="sview_hint">搜索xxxxx</item>
+        <item name="sview_textSize">14sp</item>
+        <item name="sview_textColor">#ef8282</item>
+        <item name="sview_hintColor">#FF949494</item>
+        <item name="sview_searchIcon">@drawable/ic_navigation_close_btn</item>
+        <item name="sview_clearBtnIcon">@drawable/sview_ic_clear_black_24dp</item>
+        <item name="sview_autoSearch">true</item>
     </style>
 
 </resources>

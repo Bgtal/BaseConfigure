@@ -34,4 +34,5 @@ dependencies {
     compileOnly 'com.android.support:appcompat-v7:27.1.1'
     compileOnly 'com.android.support:multidex:1.0.3'
     compileOnly 'com.blq.ssnb:snbutil:0.0.3'
+    compileOnly 'com.blq.ssnb:snbview:0.0.4'
 }
