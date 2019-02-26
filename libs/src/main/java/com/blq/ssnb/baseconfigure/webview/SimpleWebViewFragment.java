@@ -123,7 +123,11 @@ public class SimpleWebViewFragment extends BaseWebViewFragment {
 
     @Override
     protected void bindEvent() {
-        backBtn.setOnClickListener(v -> onBackPressed());
+        backBtn.setOnClickListener(v -> {
+            if (!onBackPressed()) {
+                getActivity().finish();
+            }
+        });
 
         closeBtn.setOnClickListener(v -> getActivity().finish());
     }
