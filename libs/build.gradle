@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 3
-        versionName "1.0.2"
+        versionCode 4
+        versionName "1.0.3"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -33,6 +33,6 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     compileOnly 'com.android.support:appcompat-v7:27.1.1'
     compileOnly 'com.android.support:multidex:1.0.3'
-    compileOnly 'com.blq.ssnb:snbutil:0.0.3'
-    compileOnly 'com.blq.ssnb:snbview:0.0.4'
+    compileOnly 'com.blq.ssnb:snbutil:0.0.6'
+    compileOnly 'com.blq.ssnb:snbview:0.0.6'
 }
