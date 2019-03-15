@@ -22,8 +22,21 @@ public class RefreshAndLoadMoreLogicHelper<T> implements IRefreshView<T>, ILoadM
 
     private OnRefreshAndLoadMoreListener<T> mRefreshAndLoadMoreListener;
 
-    public RefreshAndLoadMoreLogicHelper() {
+    public RefreshAndLoadMoreLogicHelper(RefreshControlsHelper refreshControlsHelper, LoadMoreControlsHelper loadMoreControlsHelper) {
+        setRefreshControlsHelper(refreshControlsHelper);
+        setLoadMoreControlsHelper(loadMoreControlsHelper);
+    }
 
+    public RefreshAndLoadMoreLogicHelper() {
+        this(null, null);
+    }
+
+    public void setRefreshControlsHelper(RefreshControlsHelper refreshControlsHelper) {
+        this.mRefreshControlsHelper = refreshControlsHelper;
+    }
+
+    public void setLoadMoreControlsHelper(LoadMoreControlsHelper loadMoreControlsHelper) {
+        mLoadMoreControlsHelper = loadMoreControlsHelper;
     }
 
     public void setRefreshAndLoadMoreListener(OnRefreshAndLoadMoreListener<T> refreshAndLoadMoreListener) {
