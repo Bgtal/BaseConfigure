@@ -14,13 +14,13 @@ import com.blq.ssnb.baseconfigure.LogManager;
  * ================================================
  * </pre>
  */
-public class RefreshAndLoadMoreLogicHelper<T> implements IRefreshView<T>, ILoadMoreView<T> {
+public class RefreshAndLoadMoreLogicHelper<D> {
 
     public static final String TAG = "RefreshLoadMore";
     private RefreshControlsHelper mRefreshControlsHelper;
     private LoadMoreControlsHelper mLoadMoreControlsHelper;
 
-    private OnRefreshAndLoadMoreListener<T> mRefreshAndLoadMoreListener;
+    private OnRefreshAndLoadMoreListener<D> mRefreshAndLoadMoreListener;
 
     public RefreshAndLoadMoreLogicHelper(RefreshControlsHelper refreshControlsHelper, LoadMoreControlsHelper loadMoreControlsHelper) {
         setRefreshControlsHelper(refreshControlsHelper);
@@ -39,14 +39,22 @@ public class RefreshAndLoadMoreLogicHelper<T> implements IRefreshView<T>, ILoadM
         mLoadMoreControlsHelper = loadMoreControlsHelper;
     }
 
-    public void setRefreshAndLoadMoreListener(OnRefreshAndLoadMoreListener<T> refreshAndLoadMoreListener) {
+    public void setRefreshAndLoadMoreListener(OnRefreshAndLoadMoreListener<D> refreshAndLoadMoreListener) {
         mRefreshAndLoadMoreListener = refreshAndLoadMoreListener;
+    }
+
+    private boolean isRefreshHelperCanUser() {
+        return mRefreshControlsHelper != null;
+    }
+
+    private boolean isLoadMoreHelperCanUser() {
+        return mLoadMoreControlsHelper != null;
     }
 
 
     public void performOnRefresh() {
         Log("调用刷新>>>>>>");
-        if (mRefreshControlsHelper != null) {
+        if (isRefreshHelperCanUser()) {
             //如果可以刷新的话
             if (mRefreshControlsHelper.getHelperEnable()) {
                 //且当前没有在刷新状态
@@ -61,7 +69,7 @@ public class RefreshAndLoadMoreLogicHelper<T> implements IRefreshView<T>, ILoadM
                         mLoadMoreControlsHelper.closeLoading();
                     }
                     Log("临时禁用加载更多控件");
-                    mLoadMoreControlsHelper.setLoadMoreControlsEnable(false);
+                    mLoadMoreControlsHelper.setControlsEnable(false);
 
                 } else {
                     Log("加载更多控件为空");
@@ -90,13 +98,13 @@ public class RefreshAndLoadMoreLogicHelper<T> implements IRefreshView<T>, ILoadM
 
     public void performOnLoadMore() {
         Log("调用加载更多>>>>>>");
-        if (mRefreshControlsHelper != null) {
+        if (isRefreshHelperCanUser()) {
             //如果刷新控件正在执行刷新的话就关闭它
             if (mRefreshControlsHelper.isRefreshing()) {
                 mRefreshControlsHelper.closeRefreshing();
             }
         }
-        if (mLoadMoreControlsHelper != null) {
+        if (isLoadMoreHelperCanUser()) {
             if (mLoadMoreControlsHelper.getHelperEnable()) {
                 if (!mLoadMoreControlsHelper.isLoading()) {
                     Log("打开加载更多状态");
@@ -122,18 +130,17 @@ public class RefreshAndLoadMoreLogicHelper<T> implements IRefreshView<T>, ILoadM
         Log("调用加载更多<<<<<<");
     }
 
-    @Override
-    public void onRefreshSuccess(T data) {
+    public void onRefreshSuccess(D data) {
 
         Log("刷新成功>>>>>>");
-        if (mRefreshControlsHelper != null) {
+        if (isRefreshHelperCanUser()) {
             //关闭刷新的方法
             Log("关闭刷新的方法");
             mRefreshControlsHelper.closeRefreshing();
-            if (mLoadMoreControlsHelper != null) {
+            if (isLoadMoreHelperCanUser()) {
                 //打开加载更多的方法
                 Log("启用加载更多的方法");
-                mLoadMoreControlsHelper.setLoadMoreControlsEnable(true);
+                mLoadMoreControlsHelper.setControlsEnable(true);
             } else {
                 Log("加载更多控件为空");
             }
@@ -145,7 +152,7 @@ public class RefreshAndLoadMoreLogicHelper<T> implements IRefreshView<T>, ILoadM
                 canLoadMore = mRefreshAndLoadMoreListener.canLoadMore(data);
             }
 
-            if (mLoadMoreControlsHelper != null) {
+            if (isLoadMoreHelperCanUser()) {
                 if (canLoadMore) {
                     Log("调用加载完成方法:loadComplete");
                     mLoadMoreControlsHelper.loadComplete();
@@ -165,19 +172,18 @@ public class RefreshAndLoadMoreLogicHelper<T> implements IRefreshView<T>, ILoadM
         Log("刷新成功<<<<<<");
     }
 
-    @Override
     public void onRefreshFail(int errorCode, String msg) {
         Log("刷新失败>>>>>>");
-        if (mRefreshControlsHelper != null) {
+        if (isRefreshHelperCanUser()) {
             //关闭刷新动画
             Log("关闭刷新的方法");
             if (mRefreshControlsHelper.isRefreshing()) {
                 mRefreshControlsHelper.closeRefreshing();
             }
             //当刷新失败的时候,加载更多开启
-            if (mLoadMoreControlsHelper != null) {
+            if (isLoadMoreHelperCanUser()) {
                 Log("启用加载更多的方法");
-                mLoadMoreControlsHelper.setLoadMoreControlsEnable(true);
+                mLoadMoreControlsHelper.setControlsEnable(true);
             } else {
                 Log("加载更多控件为空");
             }
@@ -194,11 +200,10 @@ public class RefreshAndLoadMoreLogicHelper<T> implements IRefreshView<T>, ILoadM
         Log("刷新失败<<<<<<");
     }
 
-    @Override
-    public void onLoadMoreSuccess(T data) {
+    public void onLoadMoreSuccess(D data) {
 
         Log("加载更多成功>>>>>>");
-        if (mRefreshControlsHelper != null) {
+        if (isRefreshHelperCanUser()) {
             //关闭刷新控件
             if (mRefreshControlsHelper.isRefreshing()) {
                 mRefreshControlsHelper.closeRefreshing();
@@ -211,7 +216,7 @@ public class RefreshAndLoadMoreLogicHelper<T> implements IRefreshView<T>, ILoadM
             mRefreshAndLoadMoreListener.onLoadSuccess(data);
             canLoadMore = mRefreshAndLoadMoreListener.canLoadMore(data);
         }
-        if (mLoadMoreControlsHelper != null) {
+        if (isLoadMoreHelperCanUser()) {
             if (canLoadMore) {
                 Log("调用加载完成方法:loadComplete");
                 mLoadMoreControlsHelper.loadComplete();
@@ -223,10 +228,9 @@ public class RefreshAndLoadMoreLogicHelper<T> implements IRefreshView<T>, ILoadM
         Log("加载更多成功<<<<<<");
     }
 
-    @Override
     public void onLoadMoreFail(int errorCode, String msg) {
         Log("加载更多失败>>>>>>");
-        if (mRefreshControlsHelper != null) {
+        if (isRefreshHelperCanUser()) {
             if (mRefreshControlsHelper.isRefreshing()) {
                 mRefreshControlsHelper.closeRefreshing();
             }
@@ -235,7 +239,7 @@ public class RefreshAndLoadMoreLogicHelper<T> implements IRefreshView<T>, ILoadM
             Log("通知加载失败");
             mRefreshAndLoadMoreListener.onLoadFail(errorCode, msg);
         }
-        if (mLoadMoreControlsHelper != null) {
+        if (isLoadMoreHelperCanUser()) {
             mLoadMoreControlsHelper.loadFail();
         }
         Log("加载更多失败<<<<<<");

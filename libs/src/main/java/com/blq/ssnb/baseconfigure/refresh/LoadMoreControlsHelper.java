@@ -12,34 +12,10 @@ package com.blq.ssnb.baseconfigure.refresh;
  * ================================================
  * </pre>
  */
-public abstract class LoadMoreControlsHelper<T> {
+public abstract class LoadMoreControlsHelper<V> extends ControlsHelper<V> {
 
-    private T mLoadMoreControls;
-
-    /**
-     * 是否可用
-     */
-    private boolean isHelpEnable = true;
-
-    public LoadMoreControlsHelper(T controls) {
-        if (controls == null) {
-            throw new NullPointerException("加载更多的控件不能为null");
-        }
-        this.mLoadMoreControls = controls;
-        initLoadMoreControls(mLoadMoreControls);
-    }
-
-    /**
-     * 对加载更多的控件的一些初始化
-     *
-     * @param controls 加载更多控件
-     */
-    private void initLoadMoreControls(T controls) {
-
-    }
-
-    public T getLoadMoreControls() {
-        return mLoadMoreControls;
+    public LoadMoreControlsHelper(V controls) {
+        super(controls);
     }
 
     /**
@@ -78,41 +54,15 @@ public abstract class LoadMoreControlsHelper<T> {
     public abstract void openLoading();
 
 
-    /**
-     * 设置加载更多控件是否可用
-     *
-     * @param enable true:可用
-     */
-    public abstract void setLoadMoreControlsEnable(boolean enable);
-
-    /**
-     * 获得当前控件是否可用
-     *
-     * @return true 可用
-     */
-    public abstract boolean getLoadMoreControlsEnable();
-
-    /**
-     * 设置控件help是否启用
-     *
-     * @param enable true: 启用,false:不启用，需要使用的时候判断然后关闭一些刷新操作
-     */
-    public void setHelpEnable(boolean enable) {
-        this.isHelpEnable = enable;
-        if (!isHelpEnable) {//当设置为禁用后
+    @Override
+    protected void helperEnableChange(boolean isHelpEnable) {
+        if (!isHelpEnable) {//如果被禁用了
             if (isLoading()) {//判断是否处于加载更多状态
                 closeLoading();//结束加载更多
             }
-            setLoadMoreControlsEnable(false);//禁用控件的加载更多功能
+            lastControlEnableState = getControlsEnable();
+            setControlsEnable(false);//禁用控件的加载更多功能
         }
-    }
-
-    /**
-     * 当前help是否可用
-     *
-     * @return true:可用
-     */
-    public boolean getHelperEnable() {
-        return isHelpEnable;
+        setControlsEnable(lastControlEnableState);
     }
 }
