@@ -15,7 +15,10 @@ import android.support.v4.app.Fragment;
  * 邮箱: blq_ssnb@outlook.com
  * 修改次数: 1
  * 描述:
- *      添加描述
+ *      一个简单的包裹fragment布局的Activity
+ *      使用场景:例如一个界面之前是作为fragment的，
+ *      现在需要某个地方点击跳转到这个界面，那么就直接用这个activity
+ *      不需要重新写一个包裹fragment的activity了
  * ================================================
  * </pre>
  */

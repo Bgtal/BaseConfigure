@@ -4,8 +4,6 @@ apply plugin: 'com.github.dcendents.android-maven'
 android {
     compileSdkVersion 27
 
-
-
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 27
@@ -35,4 +33,5 @@ dependencies {
     compileOnly 'com.android.support:multidex:1.0.3'
     compileOnly 'com.blq.ssnb:snbutil:0.0.6'
     compileOnly 'com.blq.ssnb:snbview:0.0.6'
+    compileOnly 'com.android.support:recyclerview-v7:27.1.1'
 }
