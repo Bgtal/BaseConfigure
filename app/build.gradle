@@ -30,7 +30,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     debugImplementation project(path: ':libs')
-    releaseImplementation "com.github.Bgtal:BaseConfigure:1.0.4"
+    releaseImplementation "com.github.Bgtal:BaseConfigure:1.0.5"
     implementation 'com.blq.ssnb:snbutil:0.0.6'
     implementation 'com.blq.ssnb:snbview:0.0.6'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
