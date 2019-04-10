@@ -29,9 +29,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation project(path: ':libs')
-    implementation 'com.blq.ssnb:snbutil:0.0.3'
-    implementation 'com.blq.ssnb:snbview:0.0.4'
+    debugImplementation project(path: ':libs')
+    releaseImplementation "com.github.Bgtal:BaseConfigure:1.0.4"
+    implementation 'com.blq.ssnb:snbutil:0.0.6'
+    implementation 'com.blq.ssnb:snbview:0.0.6'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
-//    implementation 'com.github.Bgtal:BaseConfigure:1.0.0'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-21'
 }

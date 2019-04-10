@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.blq.ssnb.baseconfigure">
+    package="blq.ssnb.baseconfigure">
 
     <application>
-        <activity android:name=".BaseFragmentContainerActivity" />
-        <activity android:name=".search.SimpleSearchActivity" />
+        <activity android:name="blq.ssnb.baseconfigure.BaseFragmentContainerActivity" />
+        <activity android:name="blq.ssnb.baseconfigure.search.SimpleSearchActivity" />
     </application>
 </manifest>

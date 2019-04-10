@@ -20,8 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.TestOneActivity" />
-        <activity android:name=".activity.TestTwoActivity" />
+        <activity android:name=".demo.MyBaseActivity" />
+        <activity android:name=".demo.refresh.RefreshMenuActivity" />
+        <activity android:name=".demo.refresh.SwipeRefreshActivity" />
+        <activity android:name=".demo.refresh.QuickLoadMoreActivity" />
+        <activity android:name=".demo.refresh.SmaretSwipeRefreshActivity" />
+        <activity android:name=".demo.refresh.RefreshAndLoadMoreActivity" />
     </application>
 
 </manifest>

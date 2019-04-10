@@ -1,9 +1,7 @@
 package blq.ssnb.baseconfigure;
 
-import com.blq.ssnb.baseconfigure.AbsApplication;
-import com.blq.ssnb.baseconfigure.LogManager;
-
 import blq.ssnb.snbutil.SnbLog;
+import blq.ssnb.snbutil.SnbToast;
 
 /**
  * <pre>
@@ -24,6 +22,7 @@ public class MApplication extends AbsApplication {
         SnbLog.getGlobalBuilder().isOpen(true);
         LogManager.initLog();
         LogManager.openLog(false, false);
+        SnbToast.init(getContext());
     }
 
     @Override
