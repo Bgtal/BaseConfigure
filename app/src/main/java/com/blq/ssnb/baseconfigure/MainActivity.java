@@ -1,12 +1,13 @@
-package blq.ssnb.baseconfigure;
+package com.blq.ssnb.baseconfigure;
 
 import android.view.View;
 
 import com.blq.snbview.listener.OnIntervalClickListener;
 
-import blq.ssnb.baseconfigure.demo.MyBaseActivity;
-import blq.ssnb.baseconfigure.demo.MyBaseFragment;
-import blq.ssnb.baseconfigure.demo.refresh.RefreshMenuActivity;
+import blq.ssnb.baseconfigure.BaseFragmentContainerActivity;
+import com.blq.ssnb.baseconfigure.demo.MyBaseActivity;
+import com.blq.ssnb.baseconfigure.demo.MyBaseFragment;
+import com.blq.ssnb.baseconfigure.demo.refresh.RefreshMenuActivity;
 import blq.ssnb.baseconfigure.search.SimpleSearchActivity;
 import blq.ssnb.baseconfigure.simple.MenuBean;
 import blq.ssnb.baseconfigure.simple.SimpleMenuActivity;
@@ -15,7 +16,7 @@ import blq.ssnb.baseconfigure.webview.SimpleWebViewFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-import blq.ssnb.baseconfigure.demo.SearchFragment;
+import com.blq.ssnb.baseconfigure.demo.SearchFragment;
 import blq.ssnb.snbutil.SnbToast;
 
 public class MainActivity extends SimpleMenuActivity {

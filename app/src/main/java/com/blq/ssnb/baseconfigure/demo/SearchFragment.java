@@ -1,11 +1,11 @@
-package blq.ssnb.baseconfigure.demo;
+package com.blq.ssnb.baseconfigure.demo;
 
 import android.view.View;
 import android.widget.TextView;
 
-import blq.ssnb.baseconfigure.BaseFragment;
+import com.blq.ssnb.baseconfigure.R;
 
-import blq.ssnb.baseconfigure.R;
+import blq.ssnb.baseconfigure.BaseFragment;
 import blq.ssnb.baseconfigure.search.ISearchAction;
 
 /**

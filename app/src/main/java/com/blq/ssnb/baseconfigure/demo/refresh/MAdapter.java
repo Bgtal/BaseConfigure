@@ -1,4 +1,4 @@
-package blq.ssnb.baseconfigure.demo.refresh;
+package com.blq.ssnb.baseconfigure.demo.refresh;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;

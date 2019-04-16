@@ -1,19 +1,21 @@
-package blq.ssnb.baseconfigure.demo.refresh;
+package com.blq.ssnb.baseconfigure.demo.refresh;
 
 import android.graphics.Color;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.blq.ssnb.baseconfigure.R;
+
 import java.util.List;
 
 import blq.ssnb.baseconfigure.BaseActivity;
-import blq.ssnb.baseconfigure.R;
 import blq.ssnb.baseconfigure.refresh.OnRefreshListener;
 import blq.ssnb.baseconfigure.refresh.RefreshControlsHelper;
 import blq.ssnb.baseconfigure.refresh.RefreshLogicHelper;
 import blq.ssnb.snbutil.SnbDateCreateUtil;
 import blq.ssnb.snbutil.SnbToast;
+
 
 /**
  * <pre>

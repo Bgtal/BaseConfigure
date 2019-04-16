@@ -1,9 +1,10 @@
-package blq.ssnb.baseconfigure.demo;
+package com.blq.ssnb.baseconfigure.demo;
 
 import android.widget.TextView;
 
+import com.blq.ssnb.baseconfigure.R;
+
 import blq.ssnb.baseconfigure.BaseActivity;
-import blq.ssnb.baseconfigure.R;
 
 /**
  * <pre>

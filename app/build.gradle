@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "blq.ssnb.baseconfigure"
+        applicationId "com.blq.ssnb.baseconfigure"
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
@@ -18,8 +18,11 @@ android {
         android.applicationVariants.all { variant ->
             variant.outputs.all {
                 def fileName = "BaseConfigure.apk"
+                boolean isDebug = variant.buildType.name.equalsIgnoreCase("debug")
                 String file = "${variant.packageApplication.project.getProjectDir()}${File.separator}apk"
-                variant.getPackageApplication().outputDirectory = new File(file)
+                if (!isDebug) {
+                    variant.getPackageApplication().outputDirectory = new File(file)
+                }
                 outputFileName = fileName
             }
         }

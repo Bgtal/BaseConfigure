@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="blq.ssnb.baseconfigure">
+    package="com.blq.ssnb.baseconfigure">
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -24,7 +24,7 @@
         <activity android:name=".demo.refresh.RefreshMenuActivity" />
         <activity android:name=".demo.refresh.SwipeRefreshActivity" />
         <activity android:name=".demo.refresh.QuickLoadMoreActivity" />
-        <activity android:name=".demo.refresh.SmaretSwipeRefreshActivity" />
+        <activity android:name=".demo.refresh.SmartSwipeRefreshActivity" />
         <activity android:name=".demo.refresh.RefreshAndLoadMoreActivity" />
     </application>
 

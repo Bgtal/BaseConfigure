@@ -1,4 +1,4 @@
-package blq.ssnb.baseconfigure.demo.refresh;
+package com.blq.ssnb.baseconfigure.demo.refresh;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ public class RefreshMenuActivity extends SimpleMenuActivity {
                 .setActivityClass(SwipeRefreshActivity.class));
         menuBeans.add(new MenuBean().setMenuTitle("单个下拉刷新控件布局")
                 .setMenuSubTitle("使用WaveSwipeRefreshLayout刷新控件")
-                .setActivityClass(SmaretSwipeRefreshActivity.class));
+                .setActivityClass(SmartSwipeRefreshActivity.class));
         menuBeans.add(new MenuBean().setMenuTitle("单个上拉加载控件布局")
                 .setMenuSubTitle("使用BaseQuickAdapter刷新控件")
                 .setActivityClass(QuickLoadMoreActivity.class));

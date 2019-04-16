@@ -1,14 +1,15 @@
-package blq.ssnb.baseconfigure.demo.refresh;
+package com.blq.ssnb.baseconfigure.demo.refresh;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.blq.ssnb.baseconfigure.R;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import java.util.List;
 
 import blq.ssnb.baseconfigure.BaseActivity;
-import blq.ssnb.baseconfigure.R;
 import blq.ssnb.baseconfigure.refresh.LoadMoreControlsHelper;
 import blq.ssnb.baseconfigure.refresh.LoadMoreLogicHelper;
 import blq.ssnb.baseconfigure.refresh.OnLoadMoreListener;
@@ -29,6 +30,7 @@ import blq.ssnb.snbutil.SnbToast;
  */
 public class QuickLoadMoreActivity extends BaseActivity {
 
+    private SwipeRefreshLayout mRefreshLayout;
     private RecyclerView contentListView;
     private LoadMoreLogicHelper<List<String>> mLoadMoreLogicHelper;
     private MAdapter mMAdapter;
@@ -41,6 +43,7 @@ public class QuickLoadMoreActivity extends BaseActivity {
     @Override
     protected void initView() {
         contentListView = findViewById(R.id.rv_content_list);
+        mRefreshLayout = findViewById(R.id.srl_refresh_layout);
     }
 
     @Override
@@ -56,6 +59,7 @@ public class QuickLoadMoreActivity extends BaseActivity {
 
     @Override
     protected void bindEvent() {
+        mRefreshLayout.setEnabled(false);
         mLoadMoreLogicHelper.setOnLoadMoreListener(new OnLoadMoreListener<List<String>>() {
             @Override
             public void requestLoadMore() {

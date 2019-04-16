@@ -1,8 +1,9 @@
-package blq.ssnb.baseconfigure.demo.refresh;
+package com.blq.ssnb.baseconfigure.demo.refresh;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.blq.ssnb.baseconfigure.R;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.scwang.smartrefresh.layout.header.BezierRadarHeader;
@@ -10,7 +11,6 @@ import com.scwang.smartrefresh.layout.header.BezierRadarHeader;
 import java.util.List;
 
 import blq.ssnb.baseconfigure.BaseActivity;
-import blq.ssnb.baseconfigure.R;
 import blq.ssnb.baseconfigure.refresh.OnRefreshListener;
 import blq.ssnb.baseconfigure.refresh.RefreshControlsHelper;
 import blq.ssnb.baseconfigure.refresh.RefreshLogicHelper;
@@ -30,7 +30,7 @@ import blq.ssnb.snbutil.SnbToast;
  * ================================================
  * </pre>
  */
-public class SmaretSwipeRefreshActivity extends BaseActivity {
+public class SmartSwipeRefreshActivity extends BaseActivity {
 
     private SmartRefreshLayout mSwipeRefreshLayout;
     private RecyclerView contentListView;

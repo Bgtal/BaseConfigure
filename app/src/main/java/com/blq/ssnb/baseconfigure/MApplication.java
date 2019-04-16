@@ -1,5 +1,7 @@
-package blq.ssnb.baseconfigure;
+package com.blq.ssnb.baseconfigure;
 
+import blq.ssnb.baseconfigure.AbsApplication;
+import blq.ssnb.baseconfigure.LogManager;
 import blq.ssnb.snbutil.SnbLog;
 import blq.ssnb.snbutil.SnbToast;
 
