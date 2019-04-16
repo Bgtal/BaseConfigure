@@ -5,6 +5,7 @@ import android.widget.TextView;
 
 import blq.ssnb.baseconfigure.BaseFragment;
 import blq.ssnb.baseconfigure.R;
+import blq.ssnb.snbutil.SnbToast;
 
 /**
  * <pre>
@@ -39,7 +40,7 @@ public class MyBaseFragment extends BaseFragment {
                 .append("1.使用静态方法 newInstance(Class<T> cls,Bundle) 来创建实例\n")
                 .append("2.在onCreate中调用 initArgumentData()和initSaveState() 方法来获取argument中的数据\n")
                 .append("3.onCreateView中实现一些基本的方法,和BaseActivity的一样\n")
-                .append("4.跟布局设置了setOnClickListener 用于解决fragment 点击事件穿透的问题")
+                .append("4.根布局设置了setOnClickListener 用于解决fragment 点击事件穿透的问题\n")
                 .append("5.增加onBackPressed 方法用于拦截是否能返回")
                 .toString();
         contentView.setText(content);
@@ -48,5 +49,17 @@ public class MyBaseFragment extends BaseFragment {
     @Override
     protected void bindEvent() {
 
+    }
+
+    private boolean canBack = true;
+
+    @Override
+    public boolean onBackPressed() {
+        if (canBack) {
+            canBack = false;
+            SnbToast.showSmart("第一次拦截");
+            return true;
+        }
+        return false;
     }
 }

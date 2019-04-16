@@ -40,7 +40,8 @@ public class RefreshMenuActivity extends SimpleMenuActivity {
         menuBeans.add(new MenuBean().setMenuTitle("下拉刷新和上拉加载布局")
                 .setMenuSubTitle("因为使用了相应的helper," +
                         "所以以后修改的话逻辑只需要替换helper就可以了," +
-                        "相应的布局可以能改一下,这个activity里面代码还可以抽象一层，作为基类使用")
+                        "相应的布局可能需要改一下,当然这个activity里面代码还可以抽象一层，作为基类使用," +
+                        "比如配合mvp等,这里我就没抽象简单实现了一下")
                 .setActivityClass(RefreshAndLoadMoreActivity.class));
         return menuBeans;
     }

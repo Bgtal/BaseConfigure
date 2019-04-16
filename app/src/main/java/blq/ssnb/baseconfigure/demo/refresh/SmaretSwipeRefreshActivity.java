@@ -53,7 +53,7 @@ public class SmaretSwipeRefreshActivity extends BaseActivity {
     @Override
     protected void bindData() {
         mRefreshLogicHelper = new RefreshLogicHelper<>();
-        mRefreshLogicHelper.setRefreshControlsHelper(new WaveSwipeRefreshControlsHelper(mSwipeRefreshLayout));
+        mRefreshLogicHelper.setRefreshControlsHelper(new SmartRefreshControlsHelper(mSwipeRefreshLayout));
         mRefreshLogicHelper.setOnRefreshListener(new OnRefreshListener<List<String>>() {
             @Override
             public void requestRefresh() {
@@ -125,9 +125,9 @@ public class SmaretSwipeRefreshActivity extends BaseActivity {
         }, 1000);
     }
 
-    private static class WaveSwipeRefreshControlsHelper extends RefreshControlsHelper<SmartRefreshLayout> {
+    private static class SmartRefreshControlsHelper extends RefreshControlsHelper<SmartRefreshLayout> {
 
-        public WaveSwipeRefreshControlsHelper(SmartRefreshLayout controls) {
+        public SmartRefreshControlsHelper(SmartRefreshLayout controls) {
             super(controls);
             controls.setRefreshHeader(new BezierRadarHeader(controls.getContext()).setEnableHorizontalDrag(true));
         }
@@ -140,8 +140,7 @@ public class SmaretSwipeRefreshActivity extends BaseActivity {
 
         @Override
         public void closeRefreshing() {
-//            getControl().finishRefresh(1000);
-            getControl().finishRefresh();
+            getControl().finishRefresh(500);
         }
 
         @Override
@@ -152,7 +151,7 @@ public class SmaretSwipeRefreshActivity extends BaseActivity {
         @Override
         public void setControlsEnable(boolean enable) {
             if (!enable) {
-                getControl().finishRefresh();
+                closeRefreshing();
             }
             getControl().setEnabled(enable);
         }

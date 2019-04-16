@@ -15,6 +15,14 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        android.applicationVariants.all { variant ->
+            variant.outputs.all {
+                def fileName = "BaseConfigure.apk"
+                String file = "${variant.packageApplication.project.getProjectDir()}${File.separator}apk"
+                variant.getPackageApplication().outputDirectory = new File(file)
+                outputFileName = fileName
+            }
+        }
     }
     compileOptions {
         sourceCompatibility 1.8

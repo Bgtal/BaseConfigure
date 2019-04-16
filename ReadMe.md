@@ -22,6 +22,9 @@ allprojects {
 > com.blq.ssnb:snbview:0.0.6  
 > com.android.support:recyclerview-v7:27.1.1
 
+#apk
+[apk下载](/app/apk/BaseConfigure.apk)
+
 ### 说明
 
 平时的基类和一些常用的逻辑类写太多了,索性慢慢封装成包直接用

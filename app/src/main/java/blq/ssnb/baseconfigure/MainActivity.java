@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import blq.ssnb.baseconfigure.demo.SearchFragment;
+import blq.ssnb.snbutil.SnbToast;
 
 public class MainActivity extends SimpleMenuActivity {
 
@@ -44,7 +45,6 @@ public class MainActivity extends SimpleMenuActivity {
                     }
                 })
         );
-
         menuBeans.add(new MenuBean()
                 .setMenuTitle("BaseWebViewFragment")
                 .setMenuSubTitle("该fragment主要实现了WebView基本的逻辑，" +
@@ -68,6 +68,24 @@ public class MainActivity extends SimpleMenuActivity {
                 .setMenuTitle("下拉刷新和上拉加载控件")
                 .setMenuSubTitle("里面包含了单独的下拉刷新，上拉加载和下拉刷新和上拉加载的例子")
                 .setActivityClass(RefreshMenuActivity.class));
+
+        menuBeans.add(new MenuBean()
+                .setMenuTitle("BaseWebViewFragment")
+                .setMenuSubTitle("内部包含了一个WebView对象,子类需要实现 initWebView() 方法 返回WebView对象," +
+                        "同时默认初始化了WebView相关的内容,当然你可以实现相关方法（initWebSetting，initWebViewClient，initWebChromeClient 等）" +
+                        "配置自己的WebView设置。简单使用可查看SimpleWebViewFragment的实现")
+                .setOnClickListener(v -> startActivity(BaseFragmentContainerActivity.newIntent(
+                        getBaseContext(),
+                        SimpleWebViewFragment.class,
+                        SimpleWebViewFragment.newArgument("http://www.baidu.com")))));
+
+        menuBeans.add(new MenuBean()
+                .setMenuTitle("SimpleMenuActivity")
+                .setMenuSubTitle("SimpleMenuActivity是用来写demo的时候用的，现在界面展示的样式就是SimpleMenuActivity。" +
+                        "子类实现getMenuBeans()方法，返回每个item的MenuBean就行了")
+                .setOnClickListener(v -> {
+                    SnbToast.showSmart("具体看代码吧,很简单的");
+                }));
 
         return menuBeans;
     }
