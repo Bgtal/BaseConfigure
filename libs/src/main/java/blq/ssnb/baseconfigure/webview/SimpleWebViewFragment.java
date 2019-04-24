@@ -45,6 +45,7 @@ public class SimpleWebViewFragment extends BaseWebViewFragment {
     private TextView titleView;
 
     private String indexUrl = "";
+    private WebView mWebView;
 
     @Override
     protected void initArgumentData(Bundle arguments) {
@@ -59,14 +60,21 @@ public class SimpleWebViewFragment extends BaseWebViewFragment {
 
     @Override
     protected void initView(View view) {
-        super.initView(view);
         mToolbar = view.findViewById(R.id.toolbar_navigation_bar);
         loadingProgress = view.findViewById(R.id.pb_loading_progress);
         backBtn = view.findViewById(R.id.img_back_btn);
         closeBtn = view.findViewById(R.id.img_close_btn);
 
         titleView = view.findViewById(R.id.tv_title_view);
+        mWebView = view.findViewById(R.id.wv_content);
+    }
 
+    @Override
+    protected WebViewHelper initWebViewHelper() {
+        SimpleWebViewHelper mSimpleWebViewHelper = new SimpleWebViewHelper(mWebView);
+        mSimpleWebViewHelper.setTitleView(titleView);
+        mSimpleWebViewHelper.setProgressBar(loadingProgress);
+        return mSimpleWebViewHelper;
     }
 
     /**
@@ -83,38 +91,6 @@ public class SimpleWebViewFragment extends BaseWebViewFragment {
             mToolbar.inflateMenu(menus);
             mToolbar.setOnMenuItemClickListener(listener);
         }
-    }
-
-    @Override
-    protected WebView initWebView(View rootView) {
-        return rootView.findViewById(R.id.wv_content);
-    }
-
-    @Override
-    protected WebChromeClient initWebChromeClient() {
-        return new WebChromeClient() {
-
-            public boolean onJsAlert(WebView view, String url, String message,
-                                     JsResult result) {
-                Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
-                result.confirm();
-                return true;
-            }
-
-
-            @Override
-            public void onProgressChanged(WebView view, int newProgress) {
-                super.onProgressChanged(view, newProgress);
-                titleView.setText("正在加载...");
-                loadingProgress.setVisibility(View.VISIBLE);
-                loadingProgress.setProgress(newProgress);
-                if (newProgress == 100) {
-                    titleView.setText(view.getTitle());
-                    loadingProgress.setVisibility(View.GONE);
-                }
-            }
-
-        };
     }
 
     @Override
