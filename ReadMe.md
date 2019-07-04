@@ -12,15 +12,17 @@ allprojects {
 }
 ```
 
-> implementation 'com.github.Bgtal:BaseConfigure:1.0.5'
+> implementation 'com.github.Bgtal:BaseConfigure:1.0.6'
 
 ## 项目依赖
 * 使用的时候需要在自己的项目中引用下面的包，不然会报错
-> com.android.support:appcompat-v7:27.1.1  
-> com.android.support:multidex:1.0.3  
-> com.blq.ssnb:snbutil:0.0.6  
-> com.blq.ssnb:snbview:0.0.6  
-> com.android.support:recyclerview-v7:27.1.1
+> implementation 'com.android.support:appcompat-v7:27.1.1'  
+> implementation 'com.android.support:multidex:1.0.3'  
+> implementation 'com.android.support:recyclerview-v7:27.1.1'
+> implementation 'com.github.Bgtal:SnbUtil:0.0.8'  
+> implementation 'com.blq.ssnb:snbview:0.0.6'  
+> implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+> implementation 'io.reactivex.rxjava2:rxjava:2.1.14'
 
 # apk
 [apk下载](/app/apk/BaseConfigure.apk)

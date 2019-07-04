@@ -15,17 +15,17 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        android.applicationVariants.all { variant ->
-            variant.outputs.all {
-                def fileName = "BaseConfigure.apk"
-                boolean isDebug = variant.buildType.name.equalsIgnoreCase("debug")
-                String file = "${variant.packageApplication.project.getProjectDir()}${File.separator}apk"
-                if (!isDebug) {
-                    variant.getPackageApplication().outputDirectory = new File(file)
-                }
-                outputFileName = fileName
-            }
-        }
+//        android.applicationVariants.all { variant ->
+//            variant.outputs.all {
+//                def fileName = "BaseConfigure.apk"
+//                boolean isDebug = variant.buildType.name.equalsIgnoreCase("debug")
+//                String file = "${variant.packageApplication.project.getProjectDir()}${File.separator}apk"
+//                if (!isDebug) {
+//                    variant.getPackageApplication().outputDirectory = new File(file)
+//                }
+//                outputFileName = fileName
+//            }
+//        }
     }
     compileOptions {
         sourceCompatibility 1.8
@@ -48,6 +48,8 @@ dependencies {
 
     implementation rootProject.ext.libs.snbutil
     implementation rootProject.ext.libs.snbview
+    implementation rootProject.ext.libs.rxpermissions
+    implementation rootProject.ext.libs.rxjava
     implementation rootProject.ext.libs.baserecyclerviewadapterhelper
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-21'
 }

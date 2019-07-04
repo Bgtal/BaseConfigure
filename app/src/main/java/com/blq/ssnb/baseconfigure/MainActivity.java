@@ -5,9 +5,12 @@ import android.view.View;
 import com.blq.snbview.listener.OnIntervalClickListener;
 
 import blq.ssnb.baseconfigure.BaseFragmentContainerActivity;
+
 import com.blq.ssnb.baseconfigure.demo.MyBaseActivity;
 import com.blq.ssnb.baseconfigure.demo.MyBaseFragment;
+import com.blq.ssnb.baseconfigure.demo.PermissionRequestActivity;
 import com.blq.ssnb.baseconfigure.demo.refresh.RefreshMenuActivity;
+
 import blq.ssnb.baseconfigure.search.SimpleSearchActivity;
 import blq.ssnb.baseconfigure.simple.MenuBean;
 import blq.ssnb.baseconfigure.simple.SimpleMenuActivity;
@@ -17,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.blq.ssnb.baseconfigure.demo.SearchFragment;
+
 import blq.ssnb.snbutil.SnbToast;
 
 public class MainActivity extends SimpleMenuActivity {
@@ -87,6 +91,10 @@ public class MainActivity extends SimpleMenuActivity {
                 .setOnClickListener(v -> {
                     SnbToast.showSmart("具体看代码吧,很简单的");
                 }));
+        menuBeans.add(new MenuBean()
+                .setMenuTitle("PermissionRequestActivity")
+                .setMenuSubTitle("基于rxPermission的工具")
+                .setOnClickListener(v -> startActivity(PermissionRequestActivity.newIntent(getContext()))));
 
         return menuBeans;
     }

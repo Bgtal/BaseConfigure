@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.blq.ssnb.baseconfigure">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".MApplication"
@@ -26,6 +29,7 @@
         <activity android:name=".demo.refresh.QuickLoadMoreActivity" />
         <activity android:name=".demo.refresh.SmartSwipeRefreshActivity" />
         <activity android:name=".demo.refresh.RefreshAndLoadMoreActivity" />
+        <activity android:name=".demo.PermissionRequestActivity" />
     </application>
 
 </manifest>
