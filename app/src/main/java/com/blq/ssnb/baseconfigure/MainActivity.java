@@ -2,8 +2,6 @@ package com.blq.ssnb.baseconfigure;
 
 import android.view.View;
 
-import com.blq.snbview.listener.OnIntervalClickListener;
-
 import blq.ssnb.baseconfigure.BaseFragmentContainerActivity;
 
 import com.blq.ssnb.baseconfigure.demo.MyBaseActivity;
@@ -22,6 +20,7 @@ import java.util.List;
 import com.blq.ssnb.baseconfigure.demo.SearchFragment;
 
 import blq.ssnb.snbutil.SnbToast;
+import blq.ssnb.snbview.listener.OnIntervalClickListener;
 
 public class MainActivity extends SimpleMenuActivity {
 

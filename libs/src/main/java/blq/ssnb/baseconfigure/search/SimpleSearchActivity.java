@@ -6,9 +6,8 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.blq.snbview.SnbSmartSearchEdit;
-
 import blq.ssnb.baseconfigure.R;
+import blq.ssnb.snbview.SnbSmartSearchEdit;
 
 /**
  * <pre>
