@@ -12,7 +12,7 @@ allprojects {
 }
 ```
 
-> implementation 'com.github.Bgtal:BaseConfigure:1.0.6'
+> implementation 'com.github.Bgtal:BaseConfigure:1.0.7'
 
 ## 项目依赖
 * 使用的时候需要在自己的项目中引用下面的包，不然会报错
@@ -20,7 +20,7 @@ allprojects {
 > implementation 'com.android.support:multidex:1.0.3'  
 > implementation 'com.android.support:recyclerview-v7:27.1.1'
 > implementation 'com.github.Bgtal:SnbUtil:0.0.8'  
-> implementation 'com.blq.ssnb:snbview:0.0.6'  
+> implementation 'com.github.Bgtal:SnbView:0.0.8'  
 > implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
 > implementation 'io.reactivex.rxjava2:rxjava:2.1.14'
 

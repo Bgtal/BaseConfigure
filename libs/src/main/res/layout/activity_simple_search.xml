@@ -26,16 +26,16 @@
                 android:padding="12dp"
                 android:src="@drawable/ic_navigation_back_btn" />
 
-            <com.blq.snbview.SnbSmartSearchEdit
+            <blq.ssnb.snbview.SnbSmartSearchEdit
                 android:id="@+id/snb_search_edit"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                app:sview_autoSearch="true"
-                app:sview_autoSearchIntervalTime="500"
-                app:sview_focusLostAutoSearch="true"
-                app:sview_smartClearBtn="true" />
+                app:snb_autoSearch="true"
+                app:snb_autoSearchIntervalTime="500"
+                app:snb_focusLostAutoSearch="true"
+                app:snb_smartClearBtn="true" />
 
             <TextView
                 android:id="@+id/tv_search_btn"
