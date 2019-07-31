@@ -33,15 +33,7 @@ public class SnbSpacesDecoration extends RecyclerView.ItemDecoration {
                                RecyclerView parent, RecyclerView.State state) {
         outRect.left = mRect.left;
         outRect.right = mRect.right;
-        if (parent.getChildAdapterPosition(view) == 0) {
-            outRect.top = mRect.top * 2;
-        } else {
-            outRect.top = mRect.top;
-        }
-        if (parent.getChildAdapterPosition(view) == parent.getAdapter().getItemCount() - 1) {
-            outRect.bottom = mRect.bottom * 2;
-        } else {
-            outRect.bottom = mRect.bottom;
-        }
+        outRect.top = mRect.top;
+        outRect.bottom = mRect.bottom;
     }
 }
