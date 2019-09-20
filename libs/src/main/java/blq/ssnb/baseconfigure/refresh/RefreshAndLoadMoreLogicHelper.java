@@ -166,7 +166,7 @@ public class RefreshAndLoadMoreLogicHelper<D> {
             Log("不存在刷新控件");
             if (mRefreshAndLoadMoreListener != null) {
                 Log("通知刷新成功");
-                mRefreshAndLoadMoreListener.onLoadSuccess(data);
+                mRefreshAndLoadMoreListener.onRefreshSuccess(data);
             }
         }
         Log("刷新成功<<<<<<");
