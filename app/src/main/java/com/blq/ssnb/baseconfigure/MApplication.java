@@ -1,7 +1,10 @@
 package com.blq.ssnb.baseconfigure;
 
+import com.facebook.stetho.Stetho;
+
 import blq.ssnb.baseconfigure.AbsApplication;
 import blq.ssnb.baseconfigure.LogManager;
+import blq.ssnb.baseconfigure.splash.db.SplashDatabase;
 import blq.ssnb.snbutil.SnbLog;
 import blq.ssnb.snbutil.SnbToast;
 
@@ -25,6 +28,8 @@ public class MApplication extends AbsApplication {
         LogManager.initLog();
         LogManager.openLog(false, false);
         SnbToast.init(getContext());
+        SplashDatabase.init(this);
+        Stetho.initializeWithDefaults(this);
     }
 
     @Override

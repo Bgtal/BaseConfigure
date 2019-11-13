@@ -36,4 +36,6 @@ dependencies {
     compileOnly rootProject.ext.libs.recyclerview
     compileOnly rootProject.ext.libs.rxpermissions
     compileOnly rootProject.ext.libs.rxjava
+    compileOnly rootProject.ext.libs.room_runtime
+    annotationProcessor rootProject.ext.libs.room_compiler
 }

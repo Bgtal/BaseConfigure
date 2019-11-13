@@ -7,6 +7,7 @@ import blq.ssnb.baseconfigure.BaseFragmentContainerActivity;
 import com.blq.ssnb.baseconfigure.demo.MyBaseActivity;
 import com.blq.ssnb.baseconfigure.demo.MyBaseFragment;
 import com.blq.ssnb.baseconfigure.demo.PermissionRequestActivity;
+import com.blq.ssnb.baseconfigure.demo.SplashActivity;
 import com.blq.ssnb.baseconfigure.demo.refresh.RefreshMenuActivity;
 
 import blq.ssnb.baseconfigure.search.SimpleSearchActivity;
@@ -94,6 +95,11 @@ public class MainActivity extends SimpleMenuActivity {
                 .setMenuTitle("PermissionRequestActivity")
                 .setMenuSubTitle("基于rxPermission的工具")
                 .setOnClickListener(v -> startActivity(PermissionRequestActivity.newIntent(getContext()))));
+
+        menuBeans.add(new MenuBean()
+                .setMenuTitle("SplashActivity")
+                .setMenuSubTitle("一套启动图的缓存逻辑")
+                .setActivityClass(SplashActivity.class));
 
         return menuBeans;
     }

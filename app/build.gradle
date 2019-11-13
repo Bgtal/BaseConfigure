@@ -52,4 +52,8 @@ dependencies {
     implementation rootProject.ext.libs.rxjava
     implementation rootProject.ext.libs.baserecyclerviewadapterhelper
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-21'
+    implementation rootProject.ext.libs.room_runtime
+    annotationProcessor rootProject.ext.libs.room_compiler
+    implementation rootProject.ext.libs.glide
+    debugImplementation 'com.facebook.stetho:stetho:1.5.1'
 }
