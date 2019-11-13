@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
@@ -50,7 +50,7 @@
                 tools:text="我是标题" />
 
         </LinearLayout>
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
     <ProgressBar
         android:id="@+id/pb_loading_progress"

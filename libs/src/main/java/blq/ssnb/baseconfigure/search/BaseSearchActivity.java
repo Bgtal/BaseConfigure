@@ -2,8 +2,8 @@ package blq.ssnb.baseconfigure.search;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import blq.ssnb.baseconfigure.BaseActivity;
 

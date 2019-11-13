@@ -1,7 +1,7 @@
 package blq.ssnb.baseconfigure;
 
 import android.content.Context;
-import android.support.multidex.MultiDex;
+import androidx.multidex.MultiDex;
 
 /**
  * <pre>

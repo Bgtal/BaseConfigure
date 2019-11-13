@@ -1,7 +1,7 @@
 package com.blq.ssnb.baseconfigure.demo.refresh;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.blq.ssnb.baseconfigure.R;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;

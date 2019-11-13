@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
 
     defaultConfig {
         minSdkVersion 21
@@ -10,7 +10,7 @@ android {
         versionCode 10
         versionName "1.0.9"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
 
@@ -29,13 +29,13 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    compileOnly rootProject.ext.libs.appcompat
-    compileOnly rootProject.ext.libs.multidex
-    compileOnly rootProject.ext.libs.snbutil
-    compileOnly rootProject.ext.libs.snbview
-    compileOnly rootProject.ext.libs.recyclerview
+    compileOnly rootProject.ext.libs.appcompat_x
+    compileOnly rootProject.ext.libs.multidex_x
+    compileOnly rootProject.ext.libs.snbutilx
+    compileOnly rootProject.ext.libs.snbviewx
+    compileOnly rootProject.ext.libs.recyclerview_x
     compileOnly rootProject.ext.libs.rxpermissions
     compileOnly rootProject.ext.libs.rxjava
-    compileOnly rootProject.ext.libs.room_runtime
-    annotationProcessor rootProject.ext.libs.room_compiler
+    compileOnly rootProject.ext.libs.room_runtime_x
+    annotationProcessor rootProject.ext.libs.room_compiler_x
 }

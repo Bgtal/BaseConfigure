@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.blq.ssnb.baseconfigure"
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -36,24 +36,24 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    implementation rootProject.ext.libs.appcompat
-    implementation rootProject.ext.libs.constraint
-    implementation rootProject.ext.libs.recyclerview
+    implementation rootProject.ext.libs.appcompat_x
+    implementation rootProject.ext.libs.constraintlayout
+    implementation rootProject.ext.libs.recyclerview_x
 
     testImplementation rootProject.ext.libs.junit
-    androidTestImplementation rootProject.ext.libs.runner
-    androidTestImplementation rootProject.ext.libs.espresso_core
+    androidTestImplementation rootProject.ext.libs.runner_x
+    androidTestImplementation rootProject.ext.libs.espresso_core_x
     debugImplementation project(path: ':libs')
     releaseImplementation rootProject.ext.libs.BaseConfigure
 
-    implementation rootProject.ext.libs.snbutil
-    implementation rootProject.ext.libs.snbview
+    implementation rootProject.ext.libs.snbutilx
+    implementation rootProject.ext.libs.snbviewx
     implementation rootProject.ext.libs.rxpermissions
     implementation rootProject.ext.libs.rxjava
     implementation rootProject.ext.libs.baserecyclerviewadapterhelper
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-21'
-    implementation rootProject.ext.libs.room_runtime
-    annotationProcessor rootProject.ext.libs.room_compiler
+    implementation rootProject.ext.libs.room_runtime_x
+    annotationProcessor rootProject.ext.libs.room_compiler_x
     implementation rootProject.ext.libs.glide
     debugImplementation 'com.facebook.stetho:stetho:1.5.1'
 }

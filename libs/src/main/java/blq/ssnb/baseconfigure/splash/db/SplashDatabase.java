@@ -1,12 +1,12 @@
 package blq.ssnb.baseconfigure.splash.db;
 
-import android.arch.persistence.db.SupportSQLiteDatabase;
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.Room;
-import android.arch.persistence.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
 import android.content.Context;
 import android.database.SQLException;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import blq.ssnb.snbutil.SnbLog;
 
@@ -22,7 +22,7 @@ import blq.ssnb.snbutil.SnbLog;
  * ================================================
  * </pre>
  */
-@Database(entities = {SplashEntity.class}, version = 1)
+@Database(entities = {SplashEntity.class}, version = 1 ,exportSchema = false)
 public abstract class SplashDatabase extends RoomDatabase {
 
     private static volatile SplashDatabase mInstance;
