@@ -15,6 +15,7 @@ import blq.ssnb.baseconfigure.R;
 import blq.ssnb.snbutil.SnbCountDownTimer;
 import blq.ssnb.snbutil.SnbLog;
 import blq.ssnb.snbview.SnbPinchImageView;
+import blq.ssnb.snbview.gridview.IGridItemBean;
 
 /**
  * <pre>
@@ -28,7 +29,7 @@ import blq.ssnb.snbview.SnbPinchImageView;
  * ================================================
  * </pre>
  */
-public abstract class ImageWallActivity<Data extends IImageBean> extends BaseActivity {
+public abstract class ImageWallActivity<Data extends IGridItemBean> extends BaseActivity {
 
     private Toolbar mToolbar;
     private ViewPager mViewPager;
@@ -148,15 +149,6 @@ public abstract class ImageWallActivity<Data extends IImageBean> extends BaseAct
                 }
             }
         });
-    }
-
-
-    private static class aaa implements IImageBean {
-
-        @Override
-        public String getImgUrl() {
-            return null;
-        }
     }
 
 }

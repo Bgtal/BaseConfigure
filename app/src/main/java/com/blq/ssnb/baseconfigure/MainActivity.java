@@ -1,6 +1,5 @@
 package com.blq.ssnb.baseconfigure;
 
-import android.os.Bundle;
 import android.view.View;
 
 import blq.ssnb.baseconfigure.BaseFragmentContainerActivity;
@@ -12,8 +11,6 @@ import com.blq.ssnb.baseconfigure.demo.PermissionRequestActivity;
 import com.blq.ssnb.baseconfigure.demo.SplashActivity;
 import com.blq.ssnb.baseconfigure.demo.refresh.RefreshMenuActivity;
 
-import blq.ssnb.baseconfigure.pinchimage.IImageBean;
-import blq.ssnb.baseconfigure.pinchimage.ImageWallActivity;
 import blq.ssnb.baseconfigure.search.SimpleSearchActivity;
 import blq.ssnb.baseconfigure.simple.MenuBean;
 import blq.ssnb.baseconfigure.simple.SimpleMenuActivity;

@@ -1,18 +1,14 @@
 package com.blq.ssnb.baseconfigure.demo;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-
 import com.blq.ssnb.baseconfigure.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import blq.ssnb.baseconfigure.pinchimage.IImageBean;
 import blq.ssnb.baseconfigure.pinchimage.ImageWallActivity;
 import blq.ssnb.baseconfigure.pinchimage.PinchImageVPAdapter;
 import blq.ssnb.snbview.SnbPinchImageView;
+import blq.ssnb.snbview.gridview.IGridItemBean;
 
 /**
  * <pre>
@@ -30,8 +26,8 @@ public class MyImageWallActivity extends ImageWallActivity<MyImageWallActivity.S
 
     @Override
     protected void onVpBindView(PinchImageVPAdapter<SnbImage> vpAdapter, SnbPinchImageView picImage, int position) {
-        IImageBean iImageBean = vpAdapter.getData().get(position);
-        Integer integer = Integer.valueOf(iImageBean.getImgUrl());
+        IGridItemBean iImageBean = vpAdapter.getData().get(position);
+        Integer integer = Integer.valueOf(iImageBean.getUrl());
         picImage.setImageResource(integer);
     }
 
@@ -45,11 +41,11 @@ public class MyImageWallActivity extends ImageWallActivity<MyImageWallActivity.S
         snbImages.add(new SnbImage(R.drawable.vateral_5));
         snbImages.add(new SnbImage(R.drawable.vateral_6));
         snbImages.add(new SnbImage(R.drawable.vateral_7));
-        return snbImages ;
+        return snbImages;
     }
 
 
-    public static class SnbImage implements IImageBean {
+    public static class SnbImage implements IGridItemBean {
         private int id;
 
         public SnbImage(int id) {
@@ -57,7 +53,12 @@ public class MyImageWallActivity extends ImageWallActivity<MyImageWallActivity.S
         }
 
         @Override
-        public String getImgUrl() {
+        public int getFlag() {
+            return IGridItemBean.FLAG_IMG_VIEW;
+        }
+
+        @Override
+        public String getUrl() {
             return id + "";
         }
     }
