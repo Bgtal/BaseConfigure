@@ -37,5 +37,6 @@ dependencies {
     compileOnly rootProject.ext.libs.rxpermissions
     compileOnly rootProject.ext.libs.rxjava
     compileOnly rootProject.ext.libs.room_runtime_x
+    compileOnly rootProject.ext.libs.glide
     annotationProcessor rootProject.ext.libs.room_compiler_x
 }

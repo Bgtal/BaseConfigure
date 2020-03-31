@@ -1,15 +1,19 @@
 package com.blq.ssnb.baseconfigure;
 
+import android.os.Bundle;
 import android.view.View;
 
 import blq.ssnb.baseconfigure.BaseFragmentContainerActivity;
 
 import com.blq.ssnb.baseconfigure.demo.MyBaseActivity;
 import com.blq.ssnb.baseconfigure.demo.MyBaseFragment;
+import com.blq.ssnb.baseconfigure.demo.MyImageWallActivity;
 import com.blq.ssnb.baseconfigure.demo.PermissionRequestActivity;
 import com.blq.ssnb.baseconfigure.demo.SplashActivity;
 import com.blq.ssnb.baseconfigure.demo.refresh.RefreshMenuActivity;
 
+import blq.ssnb.baseconfigure.pinchimage.IImageBean;
+import blq.ssnb.baseconfigure.pinchimage.ImageWallActivity;
 import blq.ssnb.baseconfigure.search.SimpleSearchActivity;
 import blq.ssnb.baseconfigure.simple.MenuBean;
 import blq.ssnb.baseconfigure.simple.SimpleMenuActivity;
@@ -100,6 +104,9 @@ public class MainActivity extends SimpleMenuActivity {
                 .setMenuTitle("SplashActivity")
                 .setMenuSubTitle("一套启动图的缓存逻辑")
                 .setActivityClass(SplashActivity.class));
+        menuBeans.add(new MenuBean()
+                .setMenuTitle("image")
+                .setActivityClass(MyImageWallActivity.class));
 
         return menuBeans;
     }

@@ -34,6 +34,7 @@
         <activity
             android:name=".demo.SplashActivity"
             android:theme="@style/Splash" />
+        <activity android:theme="@style/trans" android:name=".demo.MyImageWallActivity" />
     </application>
 
 </manifest>

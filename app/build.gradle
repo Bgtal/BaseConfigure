@@ -44,7 +44,7 @@ dependencies {
     androidTestImplementation rootProject.ext.libs.runner_x
     androidTestImplementation rootProject.ext.libs.espresso_core_x
     debugImplementation project(path: ':libs')
-    releaseImplementation rootProject.ext.libs.BaseConfigure
+    releaseImplementation rootProject.ext.libs.BaseConfigurex
 
     implementation rootProject.ext.libs.snbutilx
     implementation rootProject.ext.libs.snbviewx
@@ -55,5 +55,5 @@ dependencies {
     implementation rootProject.ext.libs.room_runtime_x
     annotationProcessor rootProject.ext.libs.room_compiler_x
     implementation rootProject.ext.libs.glide
-    debugImplementation 'com.facebook.stetho:stetho:1.5.1'
+    implementation 'com.facebook.stetho:stetho:1.5.1'
 }
