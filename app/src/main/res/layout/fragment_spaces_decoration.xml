@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_space_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/icon_menu_item_bg"
+            android:padding="4dp"
+            android:text="设置间隙8dp" />
+
+        <TextView
+            android:id="@+id/tv_space_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/icon_menu_item_bg"
+            android:padding="4dp"
+            android:text="设置间隙16dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cb_left_space"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/icon_menu_item_bg"
+            android:padding="4dp"
+            android:text="左边距" />
+
+        <CheckBox
+            android:id="@+id/cb_top_space"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/icon_menu_item_bg"
+            android:padding="4dp"
+            android:text="上边距" />
+
+        <CheckBox
+            android:id="@+id/cb_right_space"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/icon_menu_item_bg"
+            android:padding="4dp"
+            android:text="右边距" />
+
+        <CheckBox
+            android:id="@+id/cb_bottom_space"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/icon_menu_item_bg"
+            android:padding="4dp"
+            android:text="下边距" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_color_red_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/icon_menu_item_bg"
+            android:padding="4dp"
+            android:text="间隙颜色"
+            android:textColor="@color/sview_red_200" />
+
+        <TextView
+            android:id="@+id/tv_color_green_300"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/icon_menu_item_bg"
+            android:padding="4dp"
+            android:text="间隙颜色"
+            android:textColor="@color/sview_green_300" />
+
+        <TextView
+            android:id="@+id/tv_color_amber_400"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/icon_menu_item_bg"
+            android:padding="4dp"
+            android:text="间隙颜色"
+            android:textColor="@color/sview_amber_400" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cb_left_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/icon_menu_item_bg"
+            android:padding="4dp"
+            android:text="颜色左" />
+
+        <CheckBox
+            android:id="@+id/cb_top_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/icon_menu_item_bg"
+            android:padding="4dp"
+            android:text="颜色上" />
+
+        <CheckBox
+            android:id="@+id/cb_right_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/icon_menu_item_bg"
+            android:padding="4dp"
+            android:text="颜色右" />
+
+        <CheckBox
+            android:id="@+id/cb_bottom_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/icon_menu_item_bg"
+            android:padding="4dp"
+            android:text="颜色下" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/sview_blue_grey_200">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="40dp"
+            android:background="#000000" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_content_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+
+            android:background="#AB90CAF9"
+            android:paddingStart="32dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="8dp" />
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/sview_blue_grey_200">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="40dp"
+            android:background="#000000" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_content_list_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+
+            android:background="#AB90CAF9"
+            android:paddingStart="32dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="8dp" />
+    </FrameLayout>
+</LinearLayout>

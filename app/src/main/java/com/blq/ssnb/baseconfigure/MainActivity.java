@@ -8,6 +8,7 @@ import com.blq.ssnb.baseconfigure.demo.MyBaseActivity;
 import com.blq.ssnb.baseconfigure.demo.MyBaseFragment;
 import com.blq.ssnb.baseconfigure.demo.MyImageWallActivity;
 import com.blq.ssnb.baseconfigure.demo.PermissionRequestActivity;
+import com.blq.ssnb.baseconfigure.demo.SpacesDecorationFragment;
 import com.blq.ssnb.baseconfigure.demo.SplashActivity;
 import com.blq.ssnb.baseconfigure.demo.refresh.RefreshMenuActivity;
 
@@ -104,6 +105,13 @@ public class MainActivity extends SimpleMenuActivity {
         menuBeans.add(new MenuBean()
                 .setMenuTitle("image")
                 .setActivityClass(MyImageWallActivity.class));
+        menuBeans.add(new MenuBean()
+                .setMenuTitle("SnbSpacesDecoration")
+                .setMenuSubTitle("一个用于recyclerview的间隔装饰器")
+                .setOnClickListener(v -> startActivity(BaseFragmentContainerActivity.newIntent(
+                        getContext(),
+                        SpacesDecorationFragment.class,
+                        null))));
 
         return menuBeans;
     }
