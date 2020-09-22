@@ -29,6 +29,7 @@ import blq.ssnb.snbutil.SnbLog;
  */
 public class SnbSpacesDecoration extends RecyclerView.ItemDecoration {
 
+    private Rect parentRect;
     private Rect mRect;
     private Paint mPaint;
 
@@ -43,6 +44,7 @@ public class SnbSpacesDecoration extends RecyclerView.ItemDecoration {
     }
 
     public SnbSpacesDecoration(int left, int top, int right, int bottom) {
+        parentRect = new Rect();
         setSpace(left, top, right, bottom);
         setSpaceColor(Color.TRANSPARENT);
         mPaint = new Paint();
@@ -52,12 +54,12 @@ public class SnbSpacesDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void onDraw(@NonNull Canvas c, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         super.onDraw(c, parent, state);
-        //获得爸爸的边界
-
-//        int parentPaddingLeft = parent.getPaddingLeft();
-//        int parentPaddingRight = parent.getPaddingRight();
-//        int parentPaddingTop = parent.getPaddingTop();
-//        int parentPaddingBottom = parent.getPaddingBottom();
+        if (mRect.left == 0
+                && mRect.right == 0
+                && mRect.top == 0
+                && mRect.bottom == 0) {
+            return;
+        }
 
         int parentLeft = parent.getPaddingLeft();
         int parentRight = parent.getWidth() - parent.getPaddingRight();
@@ -72,9 +74,6 @@ public class SnbSpacesDecoration extends RecyclerView.ItemDecoration {
 //        ---------
         //循环画孩子的边界
         for (int i = 0; i < parent.getChildCount(); i++) {
-//            if(i!=5){
-//                continue;
-//            }
             View child = parent.getChildAt(i);
             //获得孩子的边界
             int childLeft = child.getLeft();
@@ -88,90 +87,106 @@ public class SnbSpacesDecoration extends RecyclerView.ItemDecoration {
             int childLimitRight = childRight + mRect.right;
             int childLimitBottom = childBottom + mRect.bottom;
 
-//            int leftRectLeft = cLift - mRect.left;
-//            int leftRectTop = cTop-mRect.top;
-//            SnbLog.e(">>>>>>L"+(leftRectTop - parentTop));
-//            if(leftRectTop-parentTop<0){
-//                leftRectTop = parentTop;
-//            }
-//            int leftRectRight = cLift;
-//            int leftRectBottom = cBottom +mRect.bottom;
-//            if(leftRectBottom - parentBottom>0){
-//                leftRectBottom = parentBottom;
-//            }
             //判断四周实际可画的范围
-
-
-            int leftOutDif = childLimitLeft - parentLeft;//子类画图外边距-父类内边距  >=0表示可以显示 <0 表示左边距已经超出了
-            int canDrawLeftOut = leftOutDif < 0 ? parentLeft : childLimitLeft;
-
-            int leftInDif = childLeft - parentLeft;
-            int canDrawLeftIn = leftInDif < 0 ? parentLeft : childLeft;
-            SnbLog.e(">>>>left:out-diff:" + leftOutDif + " -out: " + canDrawLeftOut + "|in-diff:" + leftInDif + " -in: " + canDrawLeftIn);
-
-            int topOutDif = childLimitTop - parentTop;//子类外边距- 父类内边距
-            int canDrawTopOut = topOutDif < 0 ? parentTop : childLimitTop;
-
-            int topInDif = childTop - parentTop;
-            int canDrawTopIn = topInDif < 0 ? parentTop : childTop;
-
-            int rightOutDif = parentRight - childLimitRight;
-            int canDrawRightOut = rightOutDif < 0 ? parentRight : childLimitRight;
-
-            int rightInDif = parentRight - childRight;
-            int canDrawRightIn = rightInDif < 0 ? parentRight : childRight;
-
-            int bottomOutDif = parentBottom - childLimitBottom;
-            int canDrawBottomOut = bottomOutDif < 0 ? parentBottom : childLimitBottom;
-
-            int bottomInDif = parentBottom - childBottom;
-            int canDrawBottomIn = bottomInDif < 0 ? parentBottom : childBottom;
-
-            boolean isVEx = canDrawBottomOut - canDrawTopOut < 0;
-            boolean isHEx = canDrawRightOut - canDrawLeftOut < 0;
-
-            boolean isVIEx = canDrawBottomIn - canDrawBottomOut > 0;
-            boolean isHIEx = canDrawRightIn - canDrawRightOut > 0;
-
-
-            if(canDrawBottomOut-canDrawTopOut<0){
-
+            //判断需要结合上下 左右 即一个边界需要判断在两边的情况下的值
+            int leftOutDifL = childLimitLeft - parentLeft;//子左外边-父左外边 > 0 表示画图范围内 否者超出边界
+            int leftOutDifR = parentRight - childLimitLeft;//父右外边-子左外边 >0 表示画图范围内 否者超出边界
+            //上面情况只能满足其中一种，如果都满足，说明这个布局有问题了，不管了
+            int canDrawLeftOut = childLimitLeft;
+            if (leftOutDifL < 0) {
+                canDrawLeftOut = parentLeft;
+            } else if (leftOutDifR < 0) {
+                canDrawLeftOut = parentRight;
             }
 
-            if (!isVEx && !isHEx && !isVIEx && !isHIEx) {
+            int leftInDifL = childLeft - parentLeft;
+            int leftInDifR = parentRight - childLeft;
+            int canDrawLeftIn = childLeft;
+            if (leftInDifL < 0) {
+                canDrawLeftIn = parentLeft;
+            } else if (leftInDifR < 0) {
+                canDrawLeftIn = parentRight;
+            }
+
+            int topOutDifT = childLimitTop - parentTop; //子上外边 - 父上外边 > 0 表示在画图范围内 否者超出边界
+            int topOutDifB = parentBottom - childLimitTop;//父下外边 - 子上外边 > 0 表示在画图范围内
+            int canDrawTopOut = childLimitTop;
+            if (topOutDifT < 0) {
+                canDrawTopOut = parentTop;
+            } else if (topOutDifB < 0) {
+                canDrawTopOut = parentBottom;
+            }
+
+            int topInDifT = childTop - parentTop;
+            int topInDifB = parentBottom - childTop;
+            int canDrawTopIn = childTop;
+            if (topInDifT < 0) {
+                canDrawTopIn = parentTop;
+            } else if (topInDifB < 0) {
+                canDrawTopIn = parentBottom;
+            }
+
+            int rightOutDifL = childLimitRight - parentLeft;//子右外边 - 父左外边 > 0 表示画图范围内 否者超出边界
+            int rightOutDifR = parentRight - childLimitRight;//父右外边 - 子右外边 >0 表示画图范围内 否者超出边界
+            int canDrawRightOut = childLimitRight;
+            if (rightOutDifL < 0) {
+                canDrawRightOut = parentLeft;
+            } else if (rightOutDifR < 0) {
+                canDrawRightOut = parentRight;
+            }
+
+            int rightInDifL = childRight - parentLeft;
+            int rightInDifR = parentRight - childRight;
+            int canDrawRightIn = childRight;
+            if (rightInDifL < 0) {
+                canDrawRightIn = parentLeft;
+            } else if (rightInDifR < 0) {
+                canDrawRightIn = parentRight;
+            }
+
+
+            int bottomOutDifT = childLimitBottom - parentTop; //子下外边 - 父上外边 > 0 表示在画图范围内 否者超出边界
+            int bottomOutDifB = parentBottom - childLimitBottom;//父下外边 - 子下外边 > 0 表示在画图范围内
+            int canDrawBottomOut = childLimitBottom;
+            if (bottomOutDifT < 0) {
+                canDrawBottomOut = parentTop;
+            } else if (bottomOutDifB < 0) {
+                canDrawBottomOut = parentBottom;
+            }
+
+            int bottomInDifT = childBottom - parentTop;
+            int bottomInDifB = parentBottom - childBottom;
+            int canDrawBottomIn = childBottom;
+            if (bottomInDifT < 0) {
+                canDrawBottomIn = parentTop;
+            } else if (bottomInDifB < 0) {
+                canDrawBottomIn = parentBottom;
+            }
+
+            if (canDrawBottomOut - canDrawTopOut > 0 && canDrawLeftIn - canDrawLeftOut > 0) {
                 //左边
-                mPaint.setColor(Color.GREEN);
+                mPaint.setColor(leftColor);
                 c.drawRect(canDrawLeftOut, canDrawTopOut, canDrawLeftIn, canDrawBottomOut, mPaint);
+            }
 
+            if (canDrawBottomOut - canDrawTopOut > 0 && canDrawRightOut - canDrawRightIn > 0) {
                 //右边
-                mPaint.setColor(Color.YELLOW);
+                mPaint.setColor(rightColor);
                 c.drawRect(canDrawRightIn, canDrawTopOut, canDrawRightOut, canDrawBottomOut, mPaint);
-//
+            }
+
+            if (canDrawTopIn - canDrawTopOut > 0 && canDrawRightOut - canDrawLeftOut > 0) {
                 //上边
-                mPaint.setColor(Color.BLUE);
+                mPaint.setColor(topColor);
                 c.drawRect(canDrawLeftOut, canDrawTopOut, canDrawRightOut, canDrawTopIn, mPaint);
+            }
 
-
+            if (canDrawBottomOut - canDrawBottomIn > 0 && canDrawRightOut - canDrawLeftOut > 0) {
                 //下边
-                mPaint.setColor(Color.RED);
+                mPaint.setColor(bottomColor);
                 c.drawRect(canDrawLeftOut, canDrawBottomIn, canDrawRightOut, canDrawBottomOut, mPaint);
-
             }
         }
-
-
-    }
-
-    private void drawLeft(Canvas c) {
-        mPaint.setColor(Color.GREEN);
-//        c.drawRect(parentLeft, parentTop, parentLeft + mRect.left, parentBottom, mPaint);
-//        mPaint.setColor(Color.BLUE);
-//        c.drawRect(parentLeft, parentTop, parentRight, parentTop + mRect.top, mPaint);
-//        mPaint.setColor(Color.YELLOW);
-//        c.drawRect(parentRight - mRect.right, parentTop, parentRight, parentBottom, mPaint);
-//        mPaint.setColor(Color.RED);
-//        c.drawRect(parentLeft, parentBottom - mRect.bottom, parentRight, parentBottom, mPaint);
-//
     }
 
     @Override
@@ -179,6 +194,19 @@ public class SnbSpacesDecoration extends RecyclerView.ItemDecoration {
                                View view,
                                RecyclerView parent,
                                RecyclerView.State state) {
+        SnbLog.e(">>>>>>>getItemOffsets");
+        int parentLeft = parent.getPaddingLeft();
+        int parentRight = parent.getWidth() - parent.getPaddingRight();
+        int parentTop = parent.getPaddingTop();
+        int parentBottom = parent.getHeight() - parent.getPaddingBottom();
+
+        parentRect.left =  parentLeft;
+        parentRect.right = parentRight;
+        parentRect.top = parentTop;
+        parentRect.bottom = parentBottom;
+
+        SnbLog.e(">>>parent:"+parentRect.toString());
+
         outRect.left = mRect.left;
         outRect.right = mRect.right;
         outRect.top = mRect.top;

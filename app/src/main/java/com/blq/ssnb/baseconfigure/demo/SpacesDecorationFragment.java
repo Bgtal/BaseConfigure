@@ -1,5 +1,7 @@
 package com.blq.ssnb.baseconfigure.demo;
 
+import android.graphics.Color;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -39,20 +41,34 @@ public class SpacesDecorationFragment extends BaseFragment {
 
     View space8;
     View space16;
+    int space;
 
     CheckBox leftSpace;
     CheckBox topSpace;
     CheckBox rightSpace;
     CheckBox bottomSpace;
 
+    boolean cbLeftSpace = false;
+    boolean cbRightSpace = false;
+    boolean cbTopSpace = false;
+    boolean cbBottomSpace = false;
+
     View colorRed200;
     View colorGreen300;
     View colorAmber400;
+
+    int color;
 
     CheckBox leftColor;
     CheckBox topColor;
     CheckBox rightColor;
     CheckBox bottomColor;
+
+
+    boolean cbLeftColor = false;
+    boolean cbRightColor = false;
+    boolean cbTopColor = false;
+    boolean cbBottomColor = false;
 
     RecyclerView listView;
     RecyclerView listView2;
@@ -89,11 +105,14 @@ public class SpacesDecorationFragment extends BaseFragment {
     private ListAdapter hListAdapter;
     private int dp8;
     private SnbSpacesDecoration mSpacesDecoration;
+    private SnbSpacesDecoration mSpacesDecoration2;
 
     @Override
     protected void initData() {
-        dp8 = SnbDisplayUtil.dp2Px(getContext(), 8);
-        mSpacesDecoration = new SnbSpacesDecoration(dp8);
+        space = dp8 = SnbDisplayUtil.dp2Px(getContext(), 8);
+        mSpacesDecoration = new SnbSpacesDecoration(0);
+        mSpacesDecoration2 = new SnbSpacesDecoration(dp8);
+        mSpacesDecoration2.setSpaceColor(Color.YELLOW);
 
         List<SpaceBean> data = requestData();
 
@@ -101,6 +120,7 @@ public class SpacesDecorationFragment extends BaseFragment {
         vListAdapter = new ListAdapter(StaggeredGridLayoutManager.VERTICAL);
 
         listView.setAdapter(vListAdapter);
+        listView.addItemDecoration(mSpacesDecoration2);
         listView.addItemDecoration(mSpacesDecoration);
 
         hListAdapter = new ListAdapter(StaggeredGridLayoutManager.HORIZONTAL);
@@ -124,73 +144,95 @@ public class SpacesDecorationFragment extends BaseFragment {
         space8.setOnClickListener(new OnIntervalClickListener() {
             @Override
             public void onEffectiveClick(View v) {
-                mSpacesDecoration.setSpace(dp8);
-                vListAdapter.notifyDataSetChanged();
-                hListAdapter.notifyDataSetChanged();
+                space = dp8;
+                setSpace();
             }
         });
         space16.setOnClickListener(new OnIntervalClickListener() {
             @Override
             public void onEffectiveClick(View v) {
-                mSpacesDecoration.setSpace(dp8 * 2);
-                vListAdapter.notifyDataSetChanged();
-                hListAdapter.notifyDataSetChanged();
+                space = dp8 * 2;
+                setSpace();
             }
         });
 
         leftSpace.setOnCheckedChangeListener((buttonView, isChecked) -> {
-
+            cbLeftSpace = isChecked;
+            setSpace();
         });
 
         topSpace.setOnCheckedChangeListener((buttonView, isChecked) -> {
-
+            cbTopSpace = isChecked;
+            setSpace();
         });
 
         rightSpace.setOnCheckedChangeListener((buttonView, isChecked) -> {
-
+            cbRightSpace = isChecked;
+            setSpace();
         });
 
         bottomSpace.setOnCheckedChangeListener((buttonView, isChecked) -> {
-
+            cbBottomSpace = isChecked;
+            setSpace();
         });
 
 
         colorRed200.setOnClickListener(new OnIntervalClickListener() {
             @Override
             public void onEffectiveClick(View v) {
-
+                color = getResources().getColor(R.color.sview_red_200);
+                setColor();
             }
         });
         colorGreen300.setOnClickListener(new OnIntervalClickListener() {
             @Override
             public void onEffectiveClick(View v) {
-
+                color = getResources().getColor(R.color.sview_green_300);
+                setColor();
             }
         });
         colorAmber400.setOnClickListener(new OnIntervalClickListener() {
             @Override
             public void onEffectiveClick(View v) {
-
+                color = getResources().getColor(R.color.sview_amber_400);
+                setColor();
             }
         });
 
         leftColor.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-
-            }
+            cbLeftColor = isChecked;
+            setColor();
         });
 
         topColor.setOnCheckedChangeListener((buttonView, isChecked) -> {
-
+            cbTopColor = isChecked;
+            setColor();
         });
 
         rightColor.setOnCheckedChangeListener((buttonView, isChecked) -> {
-
+            cbRightColor = isChecked;
+            setColor();
         });
 
         bottomColor.setOnCheckedChangeListener((buttonView, isChecked) -> {
-
+            cbBottomColor = isChecked;
+            setColor();
         });
+    }
+
+    public void setSpace() {
+        mSpacesDecoration.setSpace(cbLeftSpace ? space : 0, cbTopSpace ? space : 0, cbRightSpace ? space : 0, cbBottomSpace ? space : 0);
+        adapterNotify();
+    }
+
+    public void setColor(){
+        mSpacesDecoration.setSpaceColor(cbLeftColor ? color : 0, cbTopColor ? color : 0, cbRightColor ? color : 0, cbBottomColor ? color : 0);
+        adapterNotify();
+    }
+
+    public void adapterNotify() {
+        vListAdapter.notifyDataSetChanged();
+        hListAdapter.notifyDataSetChanged();
     }
 
 
