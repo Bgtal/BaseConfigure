@@ -20,7 +20,9 @@ public class RefreshAndLoadMoreLogicHelper<D> {
     private RefreshControlsHelper mRefreshControlsHelper;
     private LoadMoreControlsHelper mLoadMoreControlsHelper;
 
-    private OnRefreshAndLoadMoreListener<D> mRefreshAndLoadMoreListener;
+    //    private OnRefreshAndLoadMoreListener<D> mRefreshAndLoadMoreListener;
+    private OnRefreshListener<D> mRefreshListener;
+    private OnLoadMoreListener<D> mLoadMoreListener;
 
     public RefreshAndLoadMoreLogicHelper(RefreshControlsHelper refreshControlsHelper, LoadMoreControlsHelper loadMoreControlsHelper) {
         setRefreshControlsHelper(refreshControlsHelper);
@@ -40,7 +42,16 @@ public class RefreshAndLoadMoreLogicHelper<D> {
     }
 
     public void setRefreshAndLoadMoreListener(OnRefreshAndLoadMoreListener<D> refreshAndLoadMoreListener) {
-        mRefreshAndLoadMoreListener = refreshAndLoadMoreListener;
+        mRefreshListener = refreshAndLoadMoreListener;
+        mLoadMoreListener = refreshAndLoadMoreListener;
+    }
+
+    public void setRefreshListener(OnRefreshListener<D> refreshListener) {
+        mRefreshListener = refreshListener;
+    }
+
+    public void setLoadMoreListener(OnLoadMoreListener<D> loadMoreListener) {
+        mLoadMoreListener = loadMoreListener;
     }
 
     private boolean isRefreshHelperCanUser() {
@@ -74,9 +85,10 @@ public class RefreshAndLoadMoreLogicHelper<D> {
                 } else {
                     Log("加载更多控件为空");
                 }
-                if (mRefreshAndLoadMoreListener != null) {
+                if (mRefreshListener != null) {
                     Log("调用请求刷新方法");
-                    mRefreshAndLoadMoreListener.requestRefresh();
+                    mRefreshListener.requestRefresh();
+//                    mRefreshAndLoadMoreListener.requestRefresh();
                 }
             } else {
                 Log("刷新方法被禁用");
@@ -87,10 +99,10 @@ public class RefreshAndLoadMoreLogicHelper<D> {
             }
         } else {
             Log("不存在刷新控件");
-            if (mRefreshAndLoadMoreListener != null) {
+            if (mRefreshListener != null) {
                 //那么就直接调用请求刷新的方法
                 Log("调用请求刷新方法");
-                mRefreshAndLoadMoreListener.requestRefresh();
+                mRefreshListener.requestRefresh();
             }
         }
         Log("调用刷新<<<<<<");
@@ -110,9 +122,9 @@ public class RefreshAndLoadMoreLogicHelper<D> {
                     Log("打开加载更多状态");
                     mLoadMoreControlsHelper.openLoading();
                 }
-                if (mRefreshAndLoadMoreListener != null) {
+                if (mLoadMoreListener != null) {
                     Log("调用请求加载更多方法");
-                    mRefreshAndLoadMoreListener.requestLoadMore();
+                    mLoadMoreListener.requestLoadMore();
                 }
             } else {
                 Log("加载更多方法被禁用");
@@ -122,9 +134,9 @@ public class RefreshAndLoadMoreLogicHelper<D> {
                 }
             }
         } else {
-            if (mRefreshAndLoadMoreListener != null) {
+            if (mLoadMoreListener != null) {
                 Log("调用请求加载更多方法");
-                mRefreshAndLoadMoreListener.requestLoadMore();
+                mLoadMoreListener.requestLoadMore();
             }
         }
         Log("调用加载更多<<<<<<");
@@ -146,10 +158,12 @@ public class RefreshAndLoadMoreLogicHelper<D> {
             }
 
             boolean canLoadMore = true;
-            if (mRefreshAndLoadMoreListener != null) {
+            if (mRefreshListener != null) {
                 Log("通知刷新成功");
-                mRefreshAndLoadMoreListener.onRefreshSuccess(data);
-                canLoadMore = mRefreshAndLoadMoreListener.canLoadMore(data);
+                mRefreshListener.onRefreshSuccess(data);
+                if(mLoadMoreListener != null){
+                    canLoadMore = mLoadMoreListener.canLoadMore(data);
+                }
             }
 
             if (isLoadMoreHelperCanUser()) {
@@ -164,9 +178,9 @@ public class RefreshAndLoadMoreLogicHelper<D> {
             }
         } else {
             Log("不存在刷新控件");
-            if (mRefreshAndLoadMoreListener != null) {
+            if (mRefreshListener != null) {
                 Log("通知刷新成功");
-                mRefreshAndLoadMoreListener.onRefreshSuccess(data);
+                mRefreshListener.onRefreshSuccess(data);
             }
         }
         Log("刷新成功<<<<<<");
@@ -187,14 +201,14 @@ public class RefreshAndLoadMoreLogicHelper<D> {
             } else {
                 Log("加载更多控件为空");
             }
-            if (mRefreshAndLoadMoreListener != null) {
+            if (mRefreshListener != null) {
                 Log("通知刷新失败");
-                mRefreshAndLoadMoreListener.onRefreshFail(errorCode, msg);
+                mRefreshListener.onRefreshFail(errorCode, msg);
             }
         } else {
-            if (mRefreshAndLoadMoreListener != null) {
+            if (mRefreshListener != null) {
                 Log("通知刷新失败");
-                mRefreshAndLoadMoreListener.onRefreshFail(errorCode, msg);
+                mRefreshListener.onRefreshFail(errorCode, msg);
             }
         }
         Log("刷新失败<<<<<<");
@@ -211,10 +225,10 @@ public class RefreshAndLoadMoreLogicHelper<D> {
         }
 
         boolean canLoadMore = true;
-        if (mRefreshAndLoadMoreListener != null) {
+        if (mLoadMoreListener != null) {
             Log("通知加载成功");
-            mRefreshAndLoadMoreListener.onLoadSuccess(data);
-            canLoadMore = mRefreshAndLoadMoreListener.canLoadMore(data);
+            mLoadMoreListener.onLoadSuccess(data);
+            canLoadMore = mLoadMoreListener.canLoadMore(data);
         }
         if (isLoadMoreHelperCanUser()) {
             if (canLoadMore) {
@@ -235,9 +249,9 @@ public class RefreshAndLoadMoreLogicHelper<D> {
                 mRefreshControlsHelper.closeRefreshing();
             }
         }
-        if (mRefreshAndLoadMoreListener != null) {
+        if (mLoadMoreListener != null) {
             Log("通知加载失败");
-            mRefreshAndLoadMoreListener.onLoadFail(errorCode, msg);
+            mLoadMoreListener.onLoadFail(errorCode, msg);
         }
         if (isLoadMoreHelperCanUser()) {
             mLoadMoreControlsHelper.loadFail();
